@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/album_data_source.dart';
 import 'package:flutter_application_2/models/stub_album_data_source.dart';
-import 'package:flutter_application_2/models/fetch_album.dart';
+import 'package:flutter_application_2/models/album_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;

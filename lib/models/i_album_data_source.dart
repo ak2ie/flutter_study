@@ -1,4 +1,4 @@
-import 'fetch_album.dart';
+import 'album.dart';
 
 /// データソース
 abstract class IAlbumDataSource {

@@ -14,29 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-/// @nodoc
-mixin _$AlbumState {
-  List<Album> get list => throw _privateConstructorUsedError;
-  bool get loading => throw _privateConstructorUsedError;
+Album _$AlbumFromJson(Map<String, dynamic> json) {
+  return _Album.fromJson(json);
+}
 
+/// @nodoc
+mixin _$Album {
+  int get userId => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AlbumStateCopyWith<AlbumState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AlbumCopyWith<Album> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AlbumStateCopyWith<$Res> {
-  factory $AlbumStateCopyWith(
-          AlbumState value, $Res Function(AlbumState) then) =
-      _$AlbumStateCopyWithImpl<$Res, AlbumState>;
+abstract class $AlbumCopyWith<$Res> {
+  factory $AlbumCopyWith(Album value, $Res Function(Album) then) =
+      _$AlbumCopyWithImpl<$Res, Album>;
   @useResult
-  $Res call({List<Album> list, bool loading});
+  $Res call({int userId, int id, String title});
 }
 
 /// @nodoc
-class _$AlbumStateCopyWithImpl<$Res, $Val extends AlbumState>
-    implements $AlbumStateCopyWith<$Res> {
-  _$AlbumStateCopyWithImpl(this._value, this._then);
+class _$AlbumCopyWithImpl<$Res, $Val extends Album>
+    implements $AlbumCopyWith<$Res> {
+  _$AlbumCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -46,116 +50,131 @@ class _$AlbumStateCopyWithImpl<$Res, $Val extends AlbumState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = null,
-    Object? loading = null,
+    Object? userId = null,
+    Object? id = null,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
-      list: null == list
-          ? _value.list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<Album>,
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AlbumStateCopyWith<$Res>
-    implements $AlbumStateCopyWith<$Res> {
-  factory _$$_AlbumStateCopyWith(
-          _$_AlbumState value, $Res Function(_$_AlbumState) then) =
-      __$$_AlbumStateCopyWithImpl<$Res>;
+abstract class _$$_AlbumCopyWith<$Res> implements $AlbumCopyWith<$Res> {
+  factory _$$_AlbumCopyWith(_$_Album value, $Res Function(_$_Album) then) =
+      __$$_AlbumCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Album> list, bool loading});
+  $Res call({int userId, int id, String title});
 }
 
 /// @nodoc
-class __$$_AlbumStateCopyWithImpl<$Res>
-    extends _$AlbumStateCopyWithImpl<$Res, _$_AlbumState>
-    implements _$$_AlbumStateCopyWith<$Res> {
-  __$$_AlbumStateCopyWithImpl(
-      _$_AlbumState _value, $Res Function(_$_AlbumState) _then)
+class __$$_AlbumCopyWithImpl<$Res> extends _$AlbumCopyWithImpl<$Res, _$_Album>
+    implements _$$_AlbumCopyWith<$Res> {
+  __$$_AlbumCopyWithImpl(_$_Album _value, $Res Function(_$_Album) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = null,
-    Object? loading = null,
+    Object? userId = null,
+    Object? id = null,
+    Object? title = null,
   }) {
-    return _then(_$_AlbumState(
-      list: null == list
-          ? _value._list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<Album>,
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_$_Album(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$_Album implements _Album {
+  const _$_Album({this.userId = 0, this.id = 0, this.title = ''});
 
-class _$_AlbumState extends _AlbumState {
-  const _$_AlbumState({final List<Album> list = const [], this.loading = true})
-      : _list = list,
-        super._();
-
-  final List<Album> _list;
-  @override
-  @JsonKey()
-  List<Album> get list {
-    if (_list is EqualUnmodifiableListView) return _list;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_list);
-  }
+  factory _$_Album.fromJson(Map<String, dynamic> json) =>
+      _$$_AlbumFromJson(json);
 
   @override
   @JsonKey()
-  final bool loading;
+  final int userId;
+  @override
+  @JsonKey()
+  final int id;
+  @override
+  @JsonKey()
+  final String title;
 
   @override
   String toString() {
-    return 'AlbumState(list: $list, loading: $loading)';
+    return 'Album(userId: $userId, id: $id, title: $title)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AlbumState &&
-            const DeepCollectionEquality().equals(other._list, _list) &&
-            (identical(other.loading, loading) || other.loading == loading));
+            other is _$_Album &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_list), loading);
+  int get hashCode => Object.hash(runtimeType, userId, id, title);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AlbumStateCopyWith<_$_AlbumState> get copyWith =>
-      __$$_AlbumStateCopyWithImpl<_$_AlbumState>(this, _$identity);
+  _$$_AlbumCopyWith<_$_Album> get copyWith =>
+      __$$_AlbumCopyWithImpl<_$_Album>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AlbumToJson(
+      this,
+    );
+  }
 }
 
-abstract class _AlbumState extends AlbumState {
-  const factory _AlbumState({final List<Album> list, final bool loading}) =
-      _$_AlbumState;
-  const _AlbumState._() : super._();
+abstract class _Album implements Album {
+  const factory _Album({final int userId, final int id, final String title}) =
+      _$_Album;
+
+  factory _Album.fromJson(Map<String, dynamic> json) = _$_Album.fromJson;
 
   @override
-  List<Album> get list;
+  int get userId;
   @override
-  bool get loading;
+  int get id;
+  @override
+  String get title;
   @override
   @JsonKey(ignore: true)
-  _$$_AlbumStateCopyWith<_$_AlbumState> get copyWith =>
+  _$$_AlbumCopyWith<_$_Album> get copyWith =>
       throw _privateConstructorUsedError;
 }

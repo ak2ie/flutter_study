@@ -1,15 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'fetch_album.dart';
-
-part 'album.freezed.dart';  // dart run build_runner build --delete-conflicting-outputs
+part 'album.freezed.dart'; // dart run build_runner build --delete-conflicting-outputs
+part 'album.g.dart';
 
 @freezed
-class AlbumState with _$AlbumState {
-  const AlbumState._();
+class Album with _$Album {
+  const factory Album(
+      {@Default(0) int userId,
+      @Default(0) int id,
+      @Default('') String title}) = _Album;
 
-  const factory AlbumState({
-    @Default([]) List<Album> list,
-    @Default(true) bool loading,
-  }) = _AlbumState;
+  factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
 }

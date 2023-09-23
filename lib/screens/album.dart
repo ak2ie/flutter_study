@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/album_page_notifier.dart';
-import 'package:flutter_application_2/models/fetch_album.dart';
+import 'package:flutter_application_2/models/album_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AlbumPage extends ConsumerWidget {
@@ -12,8 +12,9 @@ class AlbumPage extends ConsumerWidget {
     final albumNotifier = ref.watch(albumProvider.notifier);
 
     return Scaffold(
-      body: ListView.builder(
-        itemCount: albumState.list.length,
+      body: albumState.when(
+        data: (albums) => ListView.builder(
+          itemCount: albums.length,
         itemBuilder: (context, index) {
           return Card(
             child: Column(children: [
@@ -21,14 +22,17 @@ class AlbumPage extends ConsumerWidget {
                 height: 10,
               ),
               Row(
-                children: [Text(albumState.list[index].title)],
+                  children: [Text(albums[index].title.toString())],
               )
             ]),
           );
         },
+        ),
+        error: (error, stackTrace) => Text("エラー！\n${error.toString()}"),
+        loading: () => const CircularProgressIndicator(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {albumNotifier.reload()},
+        onPressed: () async => {albumNotifier.reload()},
         tooltip: 'reload',
         child: const Icon(Icons.add),
       ),
