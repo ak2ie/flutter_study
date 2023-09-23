@@ -32,7 +32,7 @@ class AlbumPage extends ConsumerWidget {
         loading: () => const CircularProgressIndicator(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async => {albumNotifier.reload()},
+        onPressed: () async => {await albumNotifier.reload()},
         tooltip: 'reload',
         child: const Icon(Icons.add),
       ),

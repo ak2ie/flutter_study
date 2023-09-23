@@ -24,6 +24,7 @@ class AlbumDataSouce implements IAlbumDataSource {
     final response = await client
         .get(Uri.parse('https://jsonplaceholder.typicode.com/albums'));
     if (response.statusCode == 200) {
+      await Future.delayed(const Duration(seconds: 3));
       Iterable l = jsonDecode(response.body);
       return List<Album>.from(l.map((m) => Album.fromJson(m)));
     } else {

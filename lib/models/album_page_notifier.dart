@@ -1,30 +1,28 @@
+import 'dart:async';
+
 import 'package:flutter_application_2/models/album.dart';
 import 'package:flutter_application_2/models/album_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'album_repository.dart';
 
-final albumProvider =
-    StateNotifierProvider.autoDispose<AlbumPageNotifier,
-    AsyncValue<List<Album>>>(
-        (ref) => AlbumPageNotifier(ref));
+final albumProvider = AsyncNotifierProvider<AlbumPageNotifier, List<Album>>(
+    AlbumPageNotifier.new);
 
-class AlbumPageNotifier extends StateNotifier<AsyncValue<List<Album>>> {
-  AlbumPageNotifier(this.ref) : super(const AsyncValue.loading()) {
-    _load();
+class AlbumPageNotifier extends AsyncNotifier<List<Album>> {
+  Future<List<Album>> _load() async {
+    return ref.read(albumRepositoryProvider).fetchAlbum();
   }
 
-  final Ref ref;
-
-  void _load() async {
+  Future<void> reload() async {
     state = const AsyncValue.loading();
-    // リポジトリから取得
     state = await AsyncValue.guard(() async {
-      final data = await ref.read(albumRepositoryProvider).fetchAlbum();
-      return data;
+      var list = await ref.read(albumRepositoryProvider).fetchAlbum();
+      list.add(const Album(id: 100, userId: 999, title: "test!"));
+      return list;
     });
   }
 
-  void reload() async {
-    _load();
+  @override
+  FutureOr<List<Album>> build() async {
+    return _load();
   }
 }
