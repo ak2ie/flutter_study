@@ -82,7 +82,7 @@ class MyHomePageState extends ConsumerState<MyHomePage> {
             TextButton(
                 onPressed: () {
                   final router = ref.read(routerProvider);
-                  router.goNamed("home", pathParameters: {"tab": "0"});
+                  router.goNamed("home", pathParameters: {"index": "0"});
                 },
                 child: const Text("about"))
           ],
@@ -91,6 +91,7 @@ class MyHomePageState extends ConsumerState<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {counter.value++},
         tooltip: 'Increment',
+        heroTag: "btn2",
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

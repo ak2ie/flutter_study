@@ -36,7 +36,7 @@ class Home extends HookConsumerWidget {
         currentIndex: currentTab,
         onTap: (index) {
           final a = ref.read(routerProvider); // onTap, onPressedなどの中ではref.watchは使わないこと
-          a.goNamed("home", pathParameters: {"tab": "$index"});
+          a.goNamed("home", pathParameters: {"index": "$index"});
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/models/album_edit_notifier.dart';
 import 'package:flutter_application_2/models/album_page_notifier.dart';
 import 'package:flutter_application_2/models/album_repository.dart';
+import 'package:flutter_application_2/router/router.dart';
+import 'package:flutter_application_2/screens/album_edit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AlbumPage extends ConsumerWidget {
@@ -15,18 +18,28 @@ class AlbumPage extends ConsumerWidget {
       body: albumState.when(
         data: (albums) => ListView.builder(
           itemCount: albums.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: Column(children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                  children: [Text(albums[index].title.toString())],
-              )
-            ]),
-          );
-        },
+          itemBuilder: (context, index) {
+            return GestureDetector(
+                onTap: () {
+                  final a = ref.read(
+                      routerProvider); // onTap, onPressedなどの中ではref.watchは使わないこと
+                  // a.goNamed("Edit"); // TODO:ここでAlbumを渡したいが、方法不明
+                  a.go("/Edit", extra: albums[index]);
+                },
+                child: Card(
+                  child: Column(children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [Text(albums[index].title.toString())],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ]),
+                ));
+          },
         ),
         error: (error, stackTrace) => Text("エラー！\n${error.toString()}"),
         loading: () => const CircularProgressIndicator(),
