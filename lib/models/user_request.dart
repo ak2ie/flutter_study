@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_application_2/models/user.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 class UserRequest {
